@@ -6,13 +6,15 @@ import { Section } from 'mui-plus-components';
 import { useNotify, useQuizStore } from 'src/hooks';
 import { jsQuiz } from 'src/lib';
 
-export function ResultSection() {
+export interface QuizResultSectionProps {}
+
+export const QuizResultSection: React.FC<QuizResultSectionProps> = () => {
 	const { attempts, resetQuiz, score } = useQuizStore();
 	const { ToastContainer } = useNotify();
 
 	return (
-		<Section sectionID='result'>
-			<Card sx={{ mt: 4 }}>
+		<Section sectionID='quiz-result'>
+			<Card>
 				<CardContent>
 					<Typography variant='h6'>خلصت الكويز ✅</Typography>
 					<Typography sx={{ mt: 2 }}>
@@ -20,13 +22,13 @@ export function ResultSection() {
 					</Typography>
 
 					<Typography sx={{ mt: 2 }}>Attempts:</Typography>
-					{attempts.map((a, idx) => (
+					{attempts.map(({ date, score }, index) => (
 						<Typography
-							key={idx}
+							key={index}
 							sx={{ fontSize: 14, mt: 1 }}
 						>
-							{idx + 1}. {a.score}/{jsQuiz.length} -{' '}
-							{new Date(a.date).toLocaleString()}
+							{index + 1}. {score}/{jsQuiz.length} -{' '}
+							{new Date(date).toLocaleString()}
 						</Typography>
 					))}
 
@@ -43,4 +45,4 @@ export function ResultSection() {
 			</Card>
 		</Section>
 	);
-}
+};
