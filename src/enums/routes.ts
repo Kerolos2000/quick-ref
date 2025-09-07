@@ -1,0 +1,17 @@
+export enum Routes {
+	AboutUs = '/about-us',
+	Blog = '/blog',
+	Cart = '/cart',
+	Checkout = '/checkout',
+	ContactUs = '/contact-us',
+	ForgotPassword = '/forgot-password',
+	Home = '/',
+	Login = '/login',
+	NotFound = '*',
+	ProductDetails = '/shop/',
+	Profile = '/profile',
+	Register = '/register',
+	ResetPassword = '/reset-password',
+	Shop = '/shop',
+	Wishlist = '/wishlist',
+}
