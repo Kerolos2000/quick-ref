@@ -524,11 +524,6 @@
   resolved "https://registry.yarnpkg.com/@fontsource-variable/cairo/-/cairo-5.2.6.tgz#6f71cafb82e1af3cae8099bc3d5323762e306b43"
   integrity sha512-XNIgCgqBh0sERynZXhcoGBymYr/FcPgzntBQnHljDMFnbdbOZSVeYPZLbxSVBHdXSlOgEkvE6YwZxpCoxVIogw==
 
-"@fontsource-variable/inter@^5.2.6":
-  version "5.2.6"
-  resolved "https://registry.yarnpkg.com/@fontsource-variable/inter/-/inter-5.2.6.tgz#014f41f5eec8d177cc296721ebbd91dad241cd0b"
-  integrity sha512-jks/bficUPQ9nn7GvXvHtlQIPudW7Wx8CrlZoY8bhxgeobNxlQan8DclUJuYF2loYRrGpfrhCIZZspXYysiVGg==
-
 "@hookform/resolvers@^5.2.1":
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-5.2.1.tgz#3332b4662fe301a969ac1b795d663cf728329166"
@@ -1822,6 +1817,11 @@ cssesc@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
+
+cssjanus@^2.0.1:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/cssjanus/-/cssjanus-2.3.0.tgz#af91e639a34d8b241e5032824f3f1b7f8dd91557"
+  integrity sha512-ZZXXn51SnxRxAZ6fdY7mBDPmA4OZd83q/J9Gdqz3YmE9TUq+9tZl+tdOnCi7PpNygI6PEkehj9rgifv5+W8a5A==
 
 csso@^4.2.0:
   version "4.2.0"
@@ -5405,6 +5405,13 @@ strnum@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/strnum/-/strnum-1.1.2.tgz#57bca4fbaa6f271081715dbc9ed7cee5493e28e4"
   integrity sha512-vrN+B7DBIoTTZjnPNewwhx6cBA/H+IS7rfW68n7XxC1y7uoiGQBxaKzqucGUgavX15dJgiGztLJ8vxuEzwqBdA==
+
+stylis-plugin-rtl@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/stylis-plugin-rtl/-/stylis-plugin-rtl-2.1.1.tgz#16707809c878494835f77e5d4aadaae3db639b5e"
+  integrity sha512-q6xIkri6fBufIO/sV55md2CbgS5c6gg9EhSVATtHHCdOnbN/jcI0u3lYhNVeuI65c4lQPo67g8xmq5jrREvzlg==
+  dependencies:
+    cssjanus "^2.0.1"
 
 stylis@4.2.0:
   version "4.2.0"

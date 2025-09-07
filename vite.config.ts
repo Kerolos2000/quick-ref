@@ -54,7 +54,7 @@ export default defineConfig({
 		}),
 		sitemap({
 			dynamicRoutes: routes.map(route => route.url),
-			hostname: 'https://elromany.vercel.app/',
+			hostname: 'https://quick-gvr59bip4-kerolos2000s-projects.vercel.app/',
 			priority: Object.fromEntries(
 				routes.map(route => [route.url, route.priority]),
 			),

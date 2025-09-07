@@ -1,5 +1,5 @@
+import { CacheProvider } from '@emotion/react';
 import '@fontsource-variable/cairo';
-import '@fontsource-variable/inter';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -7,6 +7,7 @@ import React from 'react';
 import { RouterProvider } from 'react-router-dom';
 
 import { useNotify } from './hooks';
+import { createEmotionCache } from './lib';
 import { AppRoutes } from './routes';
 import { GlobalStyles, lightTheme } from './styles';
 
@@ -19,12 +20,17 @@ export const App: React.FC<AppProps> = () => {
 
 	return (
 		<QueryClientProvider client={queryClient}>
-			<ThemeProvider theme={lightTheme}>
-				<ToastContainer position='top-center' />
-				<CssBaseline />
-				<GlobalStyles />
-				<RouterProvider router={AppRoutes} />
-			</ThemeProvider>
+			<CacheProvider
+				key={'rtl'}
+				value={createEmotionCache()}
+			>
+				<ThemeProvider theme={lightTheme}>
+					<ToastContainer position='top-center' />
+					<CssBaseline />
+					<GlobalStyles />
+					<RouterProvider router={AppRoutes} />
+				</ThemeProvider>
+			</CacheProvider>
 		</QueryClientProvider>
 	);
 };

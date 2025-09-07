@@ -1,5 +1,4 @@
 import eslint from '@typescript-eslint/eslint-plugin';
-import i18next from 'eslint-plugin-i18next';
 import perfectionist from 'eslint-plugin-perfectionist';
 import pluginReact from 'eslint-plugin-react';
 import reactCompiler from 'eslint-plugin-react-compiler';
@@ -18,7 +17,6 @@ export default [
 	{
 		plugins: {
 			eslint,
-			i18next,
 			perfectionist,
 			pluginReactRefresh,
 			reactCompiler,
@@ -31,7 +29,6 @@ export default [
 			'@typescript-eslint/no-explicit-any': 'off',
 			'@typescript-eslint/no-non-null-assertion': 'off',
 			'@typescript-eslint/no-unused-vars': 'error',
-			'i18next/no-literal-string': 'warn',
 			'no-restricted-imports': [
 				'error',
 				{
