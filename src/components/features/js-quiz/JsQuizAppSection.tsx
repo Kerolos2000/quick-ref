@@ -1,8 +1,8 @@
 import Grid from '@mui/material/Grid';
 import { Section } from 'mui-plus-components';
 
-import { QuizQuestions } from './QuizQuestions';
-import { QuizStat } from './QuizStat';
+import { JsQuizQuestions } from './JsQuizQuestions';
+import { JsQuizStat } from './JsQuizStat';
 
 export interface JsQuizAppSectionProps {}
 
@@ -14,11 +14,11 @@ export const JsQuizAppSection: React.FC<JsQuizAppSectionProps> = () => {
 				spacing={2}
 			>
 				<Grid size={{ md: 8, xs: 12 }}>
-					<QuizQuestions />
+					<JsQuizQuestions />
 				</Grid>
 
 				<Grid size={{ md: 4, xs: 12 }}>
-					<QuizStat />
+					<JsQuizStat />
 				</Grid>
 			</Grid>
 		</Section>

@@ -7,8 +7,8 @@ export const AppRoutes = createBrowserRouter([
 			{
 				index: true,
 				async lazy() {
-					const { Home } = await import('src/pages');
-					return { Component: Home };
+					const { JsQuiz } = await import('src/pages');
+					return { Component: JsQuiz };
 				},
 			},
 		],

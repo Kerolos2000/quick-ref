@@ -3,13 +3,13 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Section } from 'mui-plus-components';
-import { useNotify, useQuizStore } from 'src/hooks';
+import { useJsQuizStore, useNotify } from 'src/hooks';
 import { jsQuiz } from 'src/lib';
 
-export interface QuizResultSectionProps {}
+export interface JsQuizResultSectionProps {}
 
-export const QuizResultSection: React.FC<QuizResultSectionProps> = () => {
-	const { attempts, resetQuiz, score } = useQuizStore();
+export const JsQuizResultSection: React.FC<JsQuizResultSectionProps> = () => {
+	const { attempts, resetQuiz, score } = useJsQuizStore();
 	const { ToastContainer } = useNotify();
 
 	return (

@@ -20,7 +20,7 @@ interface QuizState {
 	startNew: () => void;
 }
 
-export const useQuizStore = create<QuizState>()(
+export const useJsQuizStore = create<QuizState>()(
 	persist(
 		(set, get) => ({
 			answers: {},
@@ -80,6 +80,6 @@ export const useQuizStore = create<QuizState>()(
 
 			startNew: () => set({ answers: {}, current: 0, score: 0, selected: '' }),
 		}),
-		{ name: 'quiz-storage' },
+		{ name: 'js-quiz-storage' },
 	),
 );

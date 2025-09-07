@@ -4,14 +4,14 @@ import CardContent from '@mui/material/CardContent';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
-import { useQuizStore } from 'src/hooks';
+import { useJsQuizStore } from 'src/hooks';
 import { jsQuiz } from 'src/lib';
 
-export interface QuizStatProps {}
+export interface JsQuizStatProps {}
 
-export const QuizStat: React.FC<QuizStatProps> = () => {
+export const JsQuizStat: React.FC<JsQuizStatProps> = () => {
 	const theme = useTheme();
-	const { current, score } = useQuizStore();
+	const { current, score } = useJsQuizStore();
 	const total = jsQuiz.length;
 
 	const chartData = [
@@ -24,15 +24,14 @@ export const QuizStat: React.FC<QuizStatProps> = () => {
 	];
 
 	const answered = current > 0 ? current : 0;
-	console.log('🚀 ~ QuizStat ~ answered:', answered);
-	const percentage = (score / answered) * 100;
+	const percentage = answered > 0 ? Math.round((score / answered) * 100) : 0;
 
 	let funnyMessage = '';
 	if (answered > 0) {
 		if (percentage < 25) {
 			funnyMessage = 'يعنى معتجاوبش حاجة صح خالص ؟ 🤦‍♂️';
 		} else if (percentage < 50) {
-			funnyMessage = 'انا نقاش و معايا عدتى و رولتى 🎨';
+			funnyMessage = 'انا نقاش و عندى عدتى و فرشتى و روليتى🎨';
 		} else if (percentage < 75) {
 			funnyMessage = 'طول ما انا موجود انت مش هتفارق دكة الجونيور ابدا 😂';
 		} else {
@@ -47,7 +46,9 @@ export const QuizStat: React.FC<QuizStatProps> = () => {
 				<Typography sx={{ mt: 1 }}>
 					السؤال الحالي: {current + 1}/{total}
 				</Typography>
-				<Typography sx={{ mt: 1 }}>النتيجة: {score}</Typography>
+				<Typography sx={{ mt: 1 }}>
+					الإجابات الصحيحة: {score} ({percentage}%)
+				</Typography>
 
 				<Box sx={{ height: 200, mt: 2, width: '100%' }}>
 					<ResponsiveContainer>
@@ -64,7 +65,6 @@ export const QuizStat: React.FC<QuizStatProps> = () => {
 									/>
 								))}
 							</Pie>
-
 							<Tooltip
 								contentStyle={{
 									backgroundColor: theme.palette.background.paper,

@@ -1,1 +1,1 @@
-export * from './quizStore';
+export * from './jsQuizStore';

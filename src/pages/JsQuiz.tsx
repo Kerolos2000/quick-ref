@@ -1,11 +1,11 @@
 import { Page } from 'mui-plus-components';
 import { JsQuizAppSection } from 'src/components';
 
-export interface HomeProps {}
+export interface JsQuizProps {}
 
-export const Home: React.FC<HomeProps> = () => {
+export const JsQuiz: React.FC<JsQuizProps> = () => {
 	return (
-		<Page title='Home'>
+		<Page title='JsQuiz'>
 			<JsQuizAppSection />
 		</Page>
 	);
