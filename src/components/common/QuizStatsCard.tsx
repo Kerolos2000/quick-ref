@@ -3,17 +3,25 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import React from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
-import { useReactQuizStore } from 'src/hooks';
-import { reactQuiz } from 'src/lib';
 
-export interface ReactQuizStatProps {}
+interface Props {
+	current: number;
+	funnyMessage?: string;
+	percentage: number;
+	score: number;
+	total: number;
+}
 
-export const ReactQuizStat: React.FC<ReactQuizStatProps> = () => {
+export const QuizStatsCard: React.FC<Props> = ({
+	current,
+	funnyMessage,
+	percentage,
+	score,
+	total,
+}) => {
 	const theme = useTheme();
-	const { current, score } = useReactQuizStore();
-	const total = reactQuiz.length;
-
 	const chartData = [
 		{ color: theme.palette.success.main, name: 'صح', value: score },
 		{
@@ -23,33 +31,16 @@ export const ReactQuizStat: React.FC<ReactQuizStatProps> = () => {
 		},
 	];
 
-	const answered = current > 0 ? current : 0;
-	const percentage = answered > 0 ? Math.round((score / answered) * 100) : 0;
-
-	let funnyMessage = '';
-	if (answered > 0) {
-		if (percentage < 25) {
-			funnyMessage = 'ركز شوية يا هندسة، الموضوع مش سهل 🤦‍♂️';
-		} else if (percentage < 50) {
-			funnyMessage = 'نص نص، محتاج مراجعة 👀';
-		} else if (percentage < 75) {
-			funnyMessage = 'كويس جدًا بس لسة فى مساحة للتحسين 🚀';
-		} else {
-			funnyMessage = 'جامد 🔥 معلم React Master!';
-		}
-	}
-
 	return (
 		<Card sx={{ height: '100%' }}>
 			<CardContent>
 				<Typography variant='h6'>إحصائيات</Typography>
 				<Typography sx={{ mt: 1 }}>
-					السؤال الحالي: {current + 1}/{total}
+					السؤال الحالي: {Math.min(current + 1, total)}/{total}
 				</Typography>
 				<Typography sx={{ mt: 1 }}>
 					الإجابات الصحيحة: {score} ({percentage}%)
 				</Typography>
-
 				<Box sx={{ height: 200, mt: 2, width: '100%' }}>
 					<ResponsiveContainer>
 						<PieChart>
@@ -71,12 +62,11 @@ export const ReactQuizStat: React.FC<ReactQuizStatProps> = () => {
 									borderRadius: 8,
 									boxShadow: theme.shadows[3],
 								}}
-								formatter={(value, name) => [`${value}`, name]}
+								formatter={(value: any, name: any) => [`${value}`, name]}
 							/>
 						</PieChart>
 					</ResponsiveContainer>
 				</Box>
-
 				{funnyMessage && (
 					<Typography
 						sx={{
