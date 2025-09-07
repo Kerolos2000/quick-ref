@@ -3,18 +3,15 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import React from 'react';
-import { Attempt } from 'src/types';
 
-interface Props {
-	attempts: Attempt[];
+export interface QuizSummaryCardProps {
 	onConfirmReset: () => void;
 	score: number;
 	toastNode?: React.ReactNode;
 	total: number;
 }
 
-export const QuizSummaryCard: React.FC<Props> = ({
-	attempts,
+export const QuizSummaryCard: React.FC<QuizSummaryCardProps> = ({
 	onConfirmReset,
 	score,
 	toastNode,
@@ -24,17 +21,8 @@ export const QuizSummaryCard: React.FC<Props> = ({
 		<CardContent>
 			<Typography variant='h6'>خلصت الكويز ✅</Typography>
 			<Typography sx={{ mt: 2 }}>
-				Score: {score}/{total}
+				نتيجتك: {score}/{total} ({Math.round((score / total) * 100)}%)
 			</Typography>
-			<Typography sx={{ mt: 2 }}>Attempts:</Typography>
-			{attempts.map(({ date, score }, index) => (
-				<Typography
-					key={index}
-					sx={{ fontSize: 14, mt: 1 }}
-				>
-					{index + 1}. {score}/{total} - {new Date(date).toLocaleString()}
-				</Typography>
-			))}
 			<Button
 				onClick={onConfirmReset}
 				sx={{ mt: 2 }}
