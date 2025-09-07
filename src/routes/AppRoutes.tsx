@@ -12,6 +12,13 @@ export const AppRoutes = createBrowserRouter([
 				},
 				path: Routes.JsQuiz,
 			},
+			{
+				async lazy() {
+					const { NotFound } = await import('src/pages');
+					return { Component: NotFound };
+				},
+				path: '*',
+			},
 		],
 		Component: Layout,
 		id: 'root',
