@@ -6,51 +6,30 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import Typography from '@mui/material/Typography';
 import { Section } from 'mui-plus-components';
-import { useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { useNotify } from 'src/hooks';
+import { useNotify, useQuizStore } from 'src/hooks';
 import { jsQuiz } from 'src/lib';
 
-type FormValues = {
-	answer: string;
-};
+import { ResultSection } from './ResultSection';
 
 export function JsQuizApp() {
-	const [current, setCurrent] = useState(0);
-	const [score, setScore] = useState(0);
-	const { notify, ToastContainer } = useNotify();
+	const { current, nextQuestion, score, selectAnswer, selected } =
+		useQuizStore();
 
-	const { control, handleSubmit, reset, watch } = useForm<FormValues>({
-		defaultValues: { answer: '' },
-	});
-
+	const { notify } = useNotify();
 	const question = jsQuiz[current];
-	const selected = watch('answer');
 
-	const onSubmit = (data: FormValues) => {
+	const handleNext = () => {
 		if (!question) return;
-		if (data.answer === question.answer) {
-			setScore(prev => prev + 1);
+		if (selected === question.answer) {
 			notify('إجابة صح', { type: 'success' });
 		} else {
 			notify('غلط', { type: 'error' });
 		}
-		reset();
-		setCurrent(prev => prev + 1);
+		nextQuestion();
 	};
 
 	if (!question) {
-		return (
-			<Section sectionID='result'>
-				<Card sx={{ mt: 4 }}>
-					<CardContent>
-						<Typography variant='h6'>خلصت الكويز ✅</Typography>
-						<Typography sx={{ mt: 2 }}>Score: {score}</Typography>
-						<ToastContainer />
-					</CardContent>
-				</Card>
-			</Section>
-		);
+		return <ResultSection />;
 	}
 
 	return (
@@ -58,34 +37,28 @@ export function JsQuizApp() {
 			<Card sx={{ mt: 4 }}>
 				<CardContent>
 					<Typography variant='h6'>{question.term}</Typography>
-					<form onSubmit={handleSubmit(onSubmit)}>
-						<Controller
-							control={control}
-							name='answer'
-							render={({ field }) => (
-								<RadioGroup {...field}>
-									{question.options.map(opt => (
-										<FormControlLabel
-											control={<Radio />}
-											key={opt}
-											label={opt}
-											value={opt}
-										/>
-									))}
-								</RadioGroup>
-							)}
-						/>
-						<Button
-							disabled={!selected}
-							sx={{ mt: 2 }}
-							type='submit'
-							variant='contained'
-						>
-							Next
-						</Button>
-					</form>
+					<RadioGroup
+						onChange={e => selectAnswer(e.target.value)}
+						value={selected}
+					>
+						{question.options.map(opt => (
+							<FormControlLabel
+								control={<Radio />}
+								key={opt}
+								label={opt}
+								value={opt}
+							/>
+						))}
+					</RadioGroup>
+					<Button
+						disabled={!selected}
+						onClick={handleNext}
+						sx={{ mt: 2 }}
+						variant='contained'
+					>
+						Next
+					</Button>
 					<Typography sx={{ mt: 2 }}>Score: {score}</Typography>
-					<ToastContainer />
 				</CardContent>
 			</Card>
 		</Section>
