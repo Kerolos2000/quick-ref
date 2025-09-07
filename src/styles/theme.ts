@@ -11,86 +11,6 @@ const commonComponents: ThemeOptions['components'] = {
 	},
 };
 
-const commonTypography: ThemeOptions['typography'] = {
-	body1: {
-		fontSize: '1rem',
-		fontWeight: 400,
-		lineHeight: 1.75,
-	},
-	body2: {
-		fontSize: '0.875rem',
-		fontWeight: 400,
-		lineHeight: 1.6,
-	},
-	button: {
-		fontSize: '0.875rem',
-		fontWeight: 600,
-		letterSpacing: '0.025em',
-		lineHeight: 1.75,
-		textTransform: 'capitalize',
-	},
-	caption: {
-		fontSize: '0.75rem',
-		fontWeight: 400,
-		letterSpacing: '0.02em',
-		lineHeight: 1.4,
-	},
-	fontWeightBold: 700,
-	fontWeightLight: 300,
-	fontWeightMedium: 500,
-	fontWeightRegular: 400,
-	h1: {
-		fontSize: '2.25rem',
-		fontWeight: 700,
-		letterSpacing: '-0.02em',
-		lineHeight: 1.2,
-	},
-	h2: {
-		fontSize: '1.875rem',
-		fontWeight: 600,
-		letterSpacing: '-0.01em',
-		lineHeight: 1.25,
-	},
-	h3: {
-		fontSize: '1.5rem',
-		fontWeight: 600,
-		lineHeight: 1.3,
-	},
-	h4: {
-		fontSize: '1.25rem',
-		fontWeight: 600,
-		lineHeight: 1.35,
-	},
-	h5: {
-		fontSize: '1rem',
-		fontWeight: 600,
-		lineHeight: 1.4,
-	},
-	h6: {
-		fontSize: '0.875rem',
-		fontWeight: 600,
-		lineHeight: 1.45,
-	},
-	htmlFontSize: 16,
-	overline: {
-		fontSize: '0.75rem',
-		fontWeight: 600,
-		letterSpacing: '0.1em',
-		lineHeight: 1.6,
-		textTransform: 'uppercase',
-	},
-	subtitle1: {
-		fontSize: '1rem',
-		fontWeight: 500,
-		lineHeight: 1.5,
-	},
-	subtitle2: {
-		fontSize: '0.875rem',
-		fontWeight: 500,
-		lineHeight: 1.45,
-	},
-};
-
 const commonShadows: ThemeOptions['shadows'] = [
 	'none',
 	'0 1px 2px 0 rgba(0,0,0,0.05)',
@@ -121,6 +41,7 @@ const commonShadows: ThemeOptions['shadows'] = [
 
 const lightTheme: ThemeOptions = createTheme({
 	components: commonComponents,
+	direction: 'rtl',
 	palette: {
 		background: { default: '#F9FAFB', paper: '#FFFFFF' },
 		error: {
@@ -137,10 +58,10 @@ const lightTheme: ThemeOptions = createTheme({
 		},
 		mode: 'light',
 		primary: {
-			contrastText: '#FFFFFF',
-			dark: '#1d4ed8',
-			light: '#60a5fa',
-			main: '#3b82f6',
+			contrastText: '#000000',
+			dark: '#a3e600',
+			light: '#bef264',
+			main: '#a3e635',
 		},
 		secondary: {
 			contrastText: '#FFFFFF',
@@ -164,7 +85,11 @@ const lightTheme: ThemeOptions = createTheme({
 		},
 	},
 	shadows: commonShadows,
-	typography: commonTypography,
+	typography: {
+		allVariants: {
+			fontFamily: 'Cairo Variable, roboto, sans-serif',
+		},
+	},
 });
 
 export { lightTheme };
