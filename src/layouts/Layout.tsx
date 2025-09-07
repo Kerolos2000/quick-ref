@@ -3,6 +3,8 @@ import { ScrollToTopButton } from 'mui-plus-components';
 import { useEffect } from 'react';
 import { Outlet, useLocation, useNavigationType } from 'react-router-dom';
 
+import { AppBar } from './AppBar';
+
 export interface LayoutProps {}
 
 export const Layout: React.FC<LayoutProps> = () => {
@@ -24,6 +26,7 @@ export const Layout: React.FC<LayoutProps> = () => {
 				minHeight: '100dvh',
 			}}
 		>
+			<AppBar />
 			<Box
 				sx={{
 					display: 'flex',
