@@ -25,7 +25,7 @@ export const App: React.FC<AppProps> = () => {
 				value={createEmotionCache()}
 			>
 				<ThemeProvider theme={lightTheme}>
-					<ToastContainer position='top-center' />
+					<ToastContainer />
 					<CssBaseline />
 					<GlobalStyles />
 					<RouterProvider router={AppRoutes} />

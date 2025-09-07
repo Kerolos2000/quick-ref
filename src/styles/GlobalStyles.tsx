@@ -10,16 +10,16 @@ export const GlobalStyles: React.FC<GlobalStylesProps> = () => {
 		<MuiGlobalStyles
 			styles={{
 				':root': {
-					'--toastify-color-dark': '#121212',
-					'--toastify-color-error': '#ef4444',
-					'--toastify-color-info': '#0ea5e9',
-					'--toastify-color-light': '#f3f4f6',
-					'--toastify-color-success': '#10b981',
-					'--toastify-color-warning': '#f59e0b',
+					'--toastify-color-dark': theme.palette.text.primary,
+					'--toastify-color-error': theme.palette.error.main,
+					'--toastify-color-info': theme.palette.info.main,
+					'--toastify-color-light': theme.palette.background.default,
+					'--toastify-color-success': theme.palette.success.main,
+					'--toastify-color-warning': theme.palette.warning.main,
 					'--toastify-font-family': 'Cairo Variable, sans-serif',
-					'--toastify-text-color-dark': '#121212',
-					'--toastify-text-color-light': '#757575',
-					'--toastify-toast-background': '#f8f8f8',
+					'--toastify-text-color-dark': theme.palette.text.primary,
+					'--toastify-text-color-light': theme.palette.text.secondary,
+					'--toastify-toast-background': theme.palette.background.paper,
 				},
 				'.MuiDrawer-paper': {
 					'::-webkit-scrollbar': {
