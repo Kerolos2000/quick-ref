@@ -1,11 +1,8 @@
-import { useState } from 'react';
-import { QuizLayout } from 'src/components/common/QuizLayout';
-import { useJsQuizStore, useNotify } from 'src/hooks';
+import { QuizLayout } from 'src/components';
+import { useJsQuizStore, useQuizReset } from 'src/hooks';
 import { jsQuiz } from 'src/lib';
 
-export interface JsQuizProps {}
-
-export const JsQuiz: React.FC<JsQuizProps> = () => {
+export const JsQuiz: React.FC = () => {
 	const {
 		attempts,
 		current,
@@ -16,22 +13,14 @@ export const JsQuiz: React.FC<JsQuizProps> = () => {
 		selectAnswer,
 		selected,
 	} = useJsQuizStore();
-	const { notify } = useNotify();
-	const [confirmOpen, setConfirmOpen] = useState(false);
 
-	const handleResetRequest = () => {
-		setConfirmOpen(true);
-	};
+	const {
+		confirmOpen,
+		handleCancelReset,
+		handleConfirmReset,
+		handleResetRequest,
+	} = useQuizReset(resetQuiz);
 
-	const handleConfirmReset = () => {
-		resetQuiz();
-		setConfirmOpen(false);
-		notify('تم إعادة الاختبار', { type: 'info' });
-	};
-
-	const handleCancelReset = () => {
-		setConfirmOpen(false);
-	};
 	return (
 		<QuizLayout
 			attempts={attempts}
