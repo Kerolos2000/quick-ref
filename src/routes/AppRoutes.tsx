@@ -21,6 +21,13 @@ export const AppRoutes = createBrowserRouter([
 			},
 			{
 				async lazy() {
+					const { ReactQuiz } = await import('src/pages');
+					return { Component: ReactQuiz };
+				},
+				path: Routes.ReactQuiz,
+			},
+			{
+				async lazy() {
 					const { NotFound } = await import('src/pages');
 					return { Component: NotFound };
 				},
