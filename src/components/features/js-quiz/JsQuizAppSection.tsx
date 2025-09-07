@@ -8,7 +8,7 @@ export interface JsQuizAppSectionProps {}
 
 export const JsQuizAppSection: React.FC<JsQuizAppSectionProps> = () => {
 	return (
-		<Section sectionID='js-quiz'>
+		<Section sectionID='js-quiz-app'>
 			<Grid
 				container
 				spacing={2}

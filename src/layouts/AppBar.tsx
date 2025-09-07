@@ -60,7 +60,14 @@ export const AppBar: React.FC<AppBarProps> = () => {
 						sx={{ gap: 2, justifyContent: 'space-between' }}
 					>
 						<Typography
-							sx={{ fontWeight: 700 }}
+							component={NavLink}
+							sx={{
+								color: 'text.primary',
+								fontWeight: 700,
+								textDecoration: 'none',
+								textTransform: 'none',
+							}}
+							to={Routes.Home}
 							variant='h6'
 						>
 							Quiz Hub
