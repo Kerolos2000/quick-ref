@@ -5,7 +5,7 @@ export interface JsQuizProps {}
 
 export const JsQuiz: React.FC<JsQuizProps> = () => {
 	return (
-		<Page title='JsQuiz'>
+		<Page title='JavaScript Quiz'>
 			<JsQuizAppSection />
 		</Page>
 	);

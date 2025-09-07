@@ -1,4 +1,4 @@
-# Quick Ref
+# Quiz Hub
 
 ## Installation
 
