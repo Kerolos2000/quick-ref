@@ -7,6 +7,7 @@ export interface QuizQuestion {
 export interface Attempt {
 	date: string;
 	score: number;
+	total: number;
 }
 
 export interface QuizLayoutProps {

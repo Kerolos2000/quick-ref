@@ -28,6 +28,13 @@ export const AppRoutes = createBrowserRouter([
 			},
 			{
 				async lazy() {
+					const { MyProfile } = await import('src/pages');
+					return { Component: MyProfile };
+				},
+				path: Routes.MyProfile,
+			},
+			{
+				async lazy() {
 					const { NotFound } = await import('src/pages');
 					return { Component: NotFound };
 				},

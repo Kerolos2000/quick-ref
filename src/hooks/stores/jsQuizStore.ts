@@ -1,11 +1,7 @@
 import { jsQuiz } from 'src/lib';
+import { Attempt } from 'src/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-
-interface Attempt {
-	date: string;
-	score: number;
-}
 
 interface QuizState {
 	answers: Record<number, string>;
@@ -29,6 +25,7 @@ export const useJsQuizStore = create<QuizState>()(
 			nextQuestion: () => {
 				const { answers, attempts, current } = get();
 				const isLast = current + 1 >= jsQuiz.length;
+
 				const newScore = Object.entries(answers).reduce((acc, [index, ans]) => {
 					const q = jsQuiz[Number(index)];
 					return acc + (q && q.answer === ans ? 1 : 0);
@@ -38,7 +35,11 @@ export const useJsQuizStore = create<QuizState>()(
 					set({
 						attempts: [
 							...attempts,
-							{ date: new Date().toISOString(), score: newScore },
+							{
+								date: new Date().toISOString(),
+								score: newScore,
+								total: jsQuiz.length,
+							},
 						],
 					});
 				}
@@ -64,7 +65,13 @@ export const useJsQuizStore = create<QuizState>()(
 				});
 			},
 
-			resetQuiz: () => set({ answers: {}, current: 0, score: 0, selected: '' }),
+			resetQuiz: () =>
+				set({
+					answers: {},
+					current: 0,
+					score: 0,
+					selected: '',
+				}),
 
 			score: 0,
 
@@ -78,7 +85,13 @@ export const useJsQuizStore = create<QuizState>()(
 
 			selected: '',
 
-			startNew: () => set({ answers: {}, current: 0, score: 0, selected: '' }),
+			startNew: () =>
+				set({
+					answers: {},
+					current: 0,
+					score: 0,
+					selected: '',
+				}),
 		}),
 		{ name: 'js-quiz-storage' },
 	),
