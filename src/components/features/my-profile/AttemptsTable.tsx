@@ -28,6 +28,11 @@ export const AttemptsTable: React.FC<AttemptsTableProps> = ({ rows }) => {
 				headerName: 'Date',
 				valueFormatter: params => new Date(params).toLocaleString(),
 			},
+			{
+				field: 'level',
+				flex: 1,
+				headerName: 'Level',
+			},
 		],
 		[],
 	);
@@ -37,6 +42,7 @@ export const AttemptsTable: React.FC<AttemptsTableProps> = ({ rows }) => {
 			rows.map((a, i) => ({
 				date: a.date,
 				id: i + 1,
+				level: a.level,
 				score: { score: a.score, total: a.total },
 			})),
 		[rows],

@@ -3,6 +3,7 @@ import { Page, Section } from 'mui-plus-components';
 import React from 'react';
 import { QuizLayoutProps } from 'src/types';
 
+import { LevelDialog } from './LevelDialog';
 import { QuizQuestionCard } from './QuizQuestionCard';
 import { QuizResetDialog } from './QuizResetDialog';
 import { QuizStatsCard } from './QuizStatsCard';
@@ -19,6 +20,7 @@ export const QuizLayout: React.FC<QuizLayoutProps> = ({
 	onSelect,
 	prevDisabled = false,
 	questions,
+	quizType,
 	resetDisabled = false,
 	score = 0,
 	selected,
@@ -44,6 +46,7 @@ export const QuizLayout: React.FC<QuizLayoutProps> = ({
 
 	return (
 		<Page title={title}>
+			<LevelDialog quizType={quizType} />
 			<Section sectionID={`quiz-${title.replace(/\s+/g, '-').toLowerCase()}`}>
 				<Grid
 					container

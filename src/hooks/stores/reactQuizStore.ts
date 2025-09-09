@@ -1,14 +1,16 @@
 import { reactQuiz } from 'src/lib';
-import { Attempt } from 'src/types';
+import { Attempt, Level } from 'src/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
+import { useGlobalLevelStore } from './globalLevelStore';
 
 interface QuizState {
 	answers: Record<number, string>;
 	attempts: Attempt[];
 	current: number;
-	nextQuestion: () => void;
-	prevQuestion: () => void;
+	nextQuestion: (level: Level) => void;
+	prevQuestion: (level: Level) => void;
 	resetQuiz: () => void;
 	score: number;
 	selectAnswer: (answer: string) => void;
@@ -22,12 +24,16 @@ export const useReactQuizStore = create<QuizState>()(
 			answers: {},
 			attempts: [],
 			current: 0,
-			nextQuestion: () => {
+			nextQuestion: (level: Level) => {
 				const { answers, attempts, current } = get();
-				const isLast = current + 1 >= reactQuiz.length;
+				const filteredQuiz =
+					level === 'all'
+						? reactQuiz
+						: reactQuiz.filter(q => q.level === level);
+				const isLast = current + 1 >= filteredQuiz.length;
 
 				const newScore = Object.entries(answers).reduce((acc, [index, ans]) => {
-					const q = reactQuiz[Number(index)];
+					const q = filteredQuiz[Number(index)];
 					return acc + (q && q.answer === ans ? 1 : 0);
 				}, 0);
 
@@ -37,8 +43,9 @@ export const useReactQuizStore = create<QuizState>()(
 							...attempts,
 							{
 								date: new Date().toISOString(),
+								level,
 								score: newScore,
-								total: reactQuiz.length,
+								total: filteredQuiz.length,
 							},
 						],
 					});
@@ -50,11 +57,15 @@ export const useReactQuizStore = create<QuizState>()(
 					selected: answers[current + 1] || '',
 				});
 			},
-			prevQuestion: () => {
+			prevQuestion: (level: Level) => {
 				const { answers, current } = get();
 				const newCurrent = Math.max(0, current - 1);
+				const filteredQuiz =
+					level === 'all'
+						? reactQuiz
+						: reactQuiz.filter(q => q.level === level);
 				const newScore = Object.entries(answers).reduce((acc, [index, ans]) => {
-					const q = reactQuiz[Number(index)];
+					const q = filteredQuiz[Number(index)];
 					return acc + (q && q.answer === ans ? 1 : 0);
 				}, 0);
 
@@ -64,17 +75,16 @@ export const useReactQuizStore = create<QuizState>()(
 					selected: answers[newCurrent] || '',
 				});
 			},
-
-			resetQuiz: () =>
+			resetQuiz: () => {
+				useGlobalLevelStore.getState().resetLevelDialog('react');
 				set({
 					answers: {},
 					current: 0,
 					score: 0,
 					selected: '',
-				}),
-
+				});
+			},
 			score: 0,
-
 			selectAnswer: (answer: string) => {
 				const { answers, current } = get();
 				set({
@@ -82,16 +92,16 @@ export const useReactQuizStore = create<QuizState>()(
 					selected: answer,
 				});
 			},
-
 			selected: '',
-
-			startNew: () =>
+			startNew: () => {
+				useGlobalLevelStore.getState().resetLevelDialog('react');
 				set({
 					answers: {},
 					current: 0,
 					score: 0,
 					selected: '',
-				}),
+				});
+			},
 		}),
 		{ name: 'react-quiz-storage' },
 	),

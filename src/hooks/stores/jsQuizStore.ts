@@ -1,14 +1,16 @@
 import { jsQuiz } from 'src/lib';
-import { Attempt } from 'src/types';
+import { Attempt, Level } from 'src/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+
+import { useGlobalLevelStore } from './globalLevelStore';
 
 interface QuizState {
 	answers: Record<number, string>;
 	attempts: Attempt[];
 	current: number;
-	nextQuestion: () => void;
-	prevQuestion: () => void;
+	nextQuestion: (level: Level) => void;
+	prevQuestion: (level: Level) => void;
 	resetQuiz: () => void;
 	score: number;
 	selectAnswer: (answer: string) => void;
@@ -22,12 +24,14 @@ export const useJsQuizStore = create<QuizState>()(
 			answers: {},
 			attempts: [],
 			current: 0,
-			nextQuestion: () => {
+			nextQuestion: (level: Level) => {
 				const { answers, attempts, current } = get();
-				const isLast = current + 1 >= jsQuiz.length;
+				const filteredQuiz =
+					level === 'all' ? jsQuiz : jsQuiz.filter(q => q.level === level);
+				const isLast = current + 1 >= filteredQuiz.length;
 
 				const newScore = Object.entries(answers).reduce((acc, [index, ans]) => {
-					const q = jsQuiz[Number(index)];
+					const q = filteredQuiz[Number(index)];
 					return acc + (q && q.answer === ans ? 1 : 0);
 				}, 0);
 
@@ -37,8 +41,9 @@ export const useJsQuizStore = create<QuizState>()(
 							...attempts,
 							{
 								date: new Date().toISOString(),
+								level,
 								score: newScore,
-								total: jsQuiz.length,
+								total: filteredQuiz.length,
 							},
 						],
 					});
@@ -50,11 +55,13 @@ export const useJsQuizStore = create<QuizState>()(
 					selected: answers[current + 1] || '',
 				});
 			},
-			prevQuestion: () => {
+			prevQuestion: (level: Level) => {
 				const { answers, current } = get();
 				const newCurrent = Math.max(0, current - 1);
+				const filteredQuiz =
+					level === 'all' ? jsQuiz : jsQuiz.filter(q => q.level === level);
 				const newScore = Object.entries(answers).reduce((acc, [index, ans]) => {
-					const q = jsQuiz[Number(index)];
+					const q = filteredQuiz[Number(index)];
 					return acc + (q && q.answer === ans ? 1 : 0);
 				}, 0);
 
@@ -65,13 +72,15 @@ export const useJsQuizStore = create<QuizState>()(
 				});
 			},
 
-			resetQuiz: () =>
+			resetQuiz: () => {
+				useGlobalLevelStore.getState().resetLevelDialog('js');
 				set({
 					answers: {},
 					current: 0,
 					score: 0,
 					selected: '',
-				}),
+				});
+			},
 
 			score: 0,
 
@@ -85,13 +94,15 @@ export const useJsQuizStore = create<QuizState>()(
 
 			selected: '',
 
-			startNew: () =>
+			startNew: () => {
+				useGlobalLevelStore.getState().resetLevelDialog('js');
 				set({
 					answers: {},
 					current: 0,
 					score: 0,
 					selected: '',
-				}),
+				});
+			},
 		}),
 		{ name: 'js-quiz-storage' },
 	),

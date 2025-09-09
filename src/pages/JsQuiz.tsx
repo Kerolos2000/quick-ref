@@ -1,8 +1,10 @@
 import { QuizLayout } from 'src/components';
-import { useJsQuizStore, useQuizReset } from 'src/hooks';
+import { useGlobalLevelStore, useJsQuizStore, useQuizReset } from 'src/hooks';
 import { jsQuiz } from 'src/lib';
 
 export const JsQuiz: React.FC = () => {
+	const { levels } = useGlobalLevelStore();
+	const level = levels.js;
 	const {
 		attempts,
 		current,
@@ -21,6 +23,9 @@ export const JsQuiz: React.FC = () => {
 		handleResetRequest,
 	} = useQuizReset(resetQuiz);
 
+	const filteredQuestions =
+		level === 'all' ? jsQuiz : jsQuiz.filter(q => q.level === level);
+
 	return (
 		<QuizLayout
 			attempts={attempts}
@@ -28,13 +33,14 @@ export const JsQuiz: React.FC = () => {
 			current={current}
 			onCancelReset={handleCancelReset}
 			onConfirmReset={handleConfirmReset}
-			onNext={nextQuestion}
-			onPrev={prevQuestion}
+			onNext={() => nextQuestion(level)}
+			onPrev={() => prevQuestion(level)}
 			onResetRequest={handleResetRequest}
 			onSelect={selectAnswer}
 			prevDisabled={current === 0}
-			questions={jsQuiz}
-			resetDisabled={jsQuiz.length === 0}
+			questions={filteredQuestions}
+			quizType='js'
+			resetDisabled={filteredQuestions.length === 0}
 			score={score}
 			selected={selected}
 			title='اختبار JavaScript'

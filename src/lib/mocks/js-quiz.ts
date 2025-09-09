@@ -1,12 +1,9 @@
-export type JsQuiz = {
-	term: string;
-	options: string[];
-	answer: string;
-};
+import { Quiz } from 'src/types';
 
-export const jsQuiz: JsQuiz[] = [
+export const jsQuiz: Quiz[] = [
 	{
 		answer: 'رفع التصريحات فوق قبل التنفيذ',
+		level: 'junior',
 		options: [
 			'تشغيل الكود في thread منفصل',
 			'تجميع الكود في فايل واحد',
@@ -17,6 +14,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'فانكشن شايلة معاها المتغيرات من البيئة الأصلية',
+		level: 'junior',
 		options: [
 			'فانكشن شايلة معاها المتغيرات من البيئة الأصلية',
 			'نوع جديد من الـ loops',
@@ -27,6 +25,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تحويل نوع البيانات أوتوماتيك',
+		level: 'junior',
 		options: [
 			'عمل inheritance بين objects',
 			'التعامل مع async code',
@@ -37,6 +36,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'انتشار الحدث من العنصر الصغير للأكبر',
+		level: 'junior',
 		options: [
 			'تشغيل فانكشن مرة واحدة بس',
 			'إلغاء تنفيذ الكود',
@@ -47,6 +47,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'التقاط الحدث من الأب قبل الابن',
+		level: 'mid',
 		options: [
 			'تخزين الداتا في session',
 			'التقاط الحدث من الأب قبل الابن',
@@ -57,6 +58,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'object للتعامل مع async code',
+		level: 'mid',
 		options: [
 			'object للتعامل مع async code',
 			'وسيلة للتعامل مع DOM',
@@ -67,6 +69,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Syntax للتعامل مع Promise بطريقة أسهل',
+		level: 'mid',
 		options: [
 			'نظام جديد للـ loops',
 			'Syntax للتعامل مع Promise بطريقة أسهل',
@@ -77,6 +80,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'المكان اللي بيتخزن فيه ترتيب استدعاء الفانكشن',
+		level: 'junior',
 		options: [
 			'وظيفة من JSON',
 			'المكان اللي بيتخزن فيه ترتيب استدعاء الفانكشن',
@@ -87,6 +91,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'فانكشن بتتبعت كـ parameter وتتندَه بعدين',
+		level: 'mid',
 		options: [
 			'Function جوة object',
 			'Function بتشتغل بس في loops',
@@ -97,6 +102,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'طريقة مختصرة لكتابة functions',
+		level: 'mid',
 		options: [
 			'Function جوة class',
 			'Function بتعمل inheritance',
@@ -107,6 +113,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'فانكشن بتتنفذ أول ما تتكتب',
+		level: 'mid',
 		options: [
 			'Function ملهاش return',
 			'فانكشن بتتنفذ أول ما تتكتب',
@@ -117,6 +124,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'آلية لعمل inheritance بين objects',
+		level: 'mid',
 		options: [
 			'وسيلة لحفظ الداتا',
 			'جزء من الـ DOM',
@@ -127,6 +135,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'وضع بيشدد القواعد ويمنع أخطاء عشوائية',
+		level: 'mid',
 		options: [
 			'وضع بيشدد القواعد ويمنع أخطاء عشوائية',
 			'وظيفة في console',
@@ -137,6 +146,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تأخير تنفيذ الفانكشن لحد ما يوقف الاستدعاء المتكرر',
+		level: 'mid',
 		options: [
 			'تشغيل فانكشن بسرعة كبيرة',
 			'حفظ state في object',
@@ -147,6 +157,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تشغيل الفانكشن كل فترة زمنية محددة',
+		level: 'mid',
 		options: [
 			'تشغيل فانكشن مرة واحدة',
 			'منع فانكشن من التنفيذ',
@@ -157,6 +168,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Function بتاخد Function أو بترجع Function',
+		level: 'mid',
 		options: [
 			'Function بتاخد Function أو بترجع Function',
 			'Function جوة Array',
@@ -167,6 +179,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Function نفس المدخلات = نفس المخرجات وما بتأثرش على برة',
+		level: 'mid',
 		options: [
 			'Function بتعدل في DOM',
 			'Function نفس المدخلات = نفس المخرجات وما بتأثرش على برة',
@@ -177,6 +190,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'نسخة سطحية مرتبطة بالـ object الأصلي',
+		level: 'mid',
 		options: [
 			'نسخة مستقلة تماما',
 			'نسخة سطحية مرتبطة بالـ object الأصلي',
@@ -187,6 +201,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'نسخة مستقلة بالكامل عن الأصل',
+		level: 'mid',
 		options: [
 			'نسخة مرتبطة بالأصل',
 			'تحويل object لـ JSON',
@@ -197,6 +212,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'صيغة لتبادل البيانات باستخدام نصوص',
+		level: 'mid',
 		options: [
 			'صيغة لتبادل البيانات باستخدام نصوص',
 			'قاعدة بيانات',
@@ -207,6 +223,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'مكان يخزن بيانات على المتصفح بشكل دائم',
+		level: 'mid',
 		options: [
 			'سيرفر خارجي',
 			'ذاكرة مؤقتة للـ RAM',
@@ -217,6 +234,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'مكان يخزن بيانات على المتصفح طول ما التبويب مفتوح',
+		level: 'mid',
 		options: [
 			'ملفات على الهارد',
 			'مكان يخزن بيانات على المتصفح طول ما التبويب مفتوح',
@@ -227,6 +245,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'قاعدة بيانات جوة المتصفح لتخزين كميات كبيرة من الداتا',
+		level: 'mid',
 		options: [
 			'نوع من أنواع الـ cookies',
 			'API خاص بالـ JSON',
@@ -237,6 +256,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'وسيلة لطلب بيانات من السيرفر',
+		level: 'mid',
 		options: [
 			'وسيلة لطلب بيانات من السيرفر',
 			'API للـ DOM events',
@@ -247,6 +267,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تشغيل فانكشن بعد مدة زمنية معينة',
+		level: 'mid',
 		options: [
 			'تشغيل فانكشن بعد مدة زمنية معينة',
 			'تشغيل فانكشن كل فترة زمنية',
@@ -257,6 +278,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تشغيل فانكشن كل فترة زمنية متكررة',
+		level: 'mid',
 		options: [
 			'تشغيل فانكشن مرة واحدة',
 			'تشغيل فانكشن كل فترة زمنية متكررة',
@@ -267,6 +289,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'إلغاء مؤقت معمول بـ setTimeout',
+		level: 'mid',
 		options: [
 			'مسح الكونسول',
 			'حذف داتا من LocalStorage',
@@ -277,6 +300,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'إلغاء مؤقت معمول بـ setInterval',
+		level: 'mid',
 		options: [
 			'إلغاء promise',
 			'مسح الـ cookies',
@@ -287,6 +311,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'بتشير للكونتكست الحالي اللي الفانكشن بتتندَه فيه',
+		level: 'mid',
 		options: [
 			'بتشير للكونتكست الحالي اللي الفانكشن بتتندَه فيه',
 			'متغير global',
@@ -297,6 +322,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تفكيك الـ arrays أو objects لمتغيرات',
+		level: 'mid',
 		options: [
 			'دمج objects مع بعض',
 			'تفكيك الـ arrays أو objects لمتغيرات',
@@ -307,6 +333,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'توسيع array أو object جوة مكان جديد',
+		level: 'mid',
 		options: [
 			'توسيع array أو object جوة مكان جديد',
 			'دمج نصوص',
@@ -317,6 +344,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'جمع باقي العناصر في array أو object',
+		level: 'mid',
 		options: [
 			'تشغيل promise',
 			'حذف عناصر من array',
@@ -327,6 +355,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'طريقة لكتابة string بدوال وتنسيق أسهل',
+		level: 'mid',
 		options: [
 			'طريقة لتخزين object',
 			'نوع من أنواع الـ loops',
@@ -338,6 +367,7 @@ export const jsQuiz: JsQuiz[] = [
 	{
 		answer:
 			'طريقة للوصول للـ object properties من غير ما يعمل error لو undefined',
+		level: 'mid',
 		options: [
 			'تخزين داتا في cookies',
 			'طريقة للوصول للـ object properties من غير ما يعمل error لو undefined',
@@ -348,6 +378,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'تحديد قيمة افتراضية لو المتغير null أو undefined',
+		level: 'mid',
 		options: [
 			'إلغاء promise',
 			'تحديد قيمة افتراضية لو المتغير null أو undefined',
@@ -358,6 +389,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'نوع بيانات primitive بيدي قيمة فريدة',
+		level: 'mid',
 		options: [
 			'نوع بيانات primitive بيدي قيمة فريدة',
 			'مكتبة جافاسكريبت',
@@ -368,6 +400,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Structure بيخزن key-value pairs بأي نوع',
+		level: 'mid',
 		options: [
 			'Structure بيخزن key-value pairs بأي نوع',
 			'Array فيها أرقام بس',
@@ -378,6 +411,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Structure بيخزن قيم فريدة من غير تكرار',
+		level: 'mid',
 		options: [
 			'Array فيها داتا متكررة',
 			'API خاص بالـ Cookies',
@@ -388,6 +422,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Map keys بتاعته لازم تبقى objects وبتتحذف لو مفيش reference',
+		level: 'mid',
 		options: [
 			'Map عادي',
 			'Map keys بتاعته لازم تبقى objects وبتتحذف لو مفيش reference',
@@ -398,6 +433,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Set keys بتاعته لازم تبقى objects وبتتحذف لو مفيش reference',
+		level: 'mid',
 		options: [
 			'Set keys بتاعته لازم تبقى objects وبتتحذف لو مفيش reference',
 			'Set عادي',
@@ -408,6 +444,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'طريقة بتخلي كود يبان كأنه في كلاس وهو أساسًا فانكشن',
+		level: 'mid',
 		options: [
 			'طريقة لتخزين البيانات في localStorage',
 			'أداة لتكرار الكود بشكل أسرع',
@@ -418,6 +455,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'آلية بتحافظ على الذاكرة عن طريق تنظيف الحاجات اللي مش مستخدمة',
+		level: 'mid',
 		options: [
 			'تخزين نسخة من الكود في الكاش',
 			'آلية بتحافظ على الذاكرة عن طريق تنظيف الحاجات اللي مش مستخدمة',
@@ -428,6 +466,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'كائن بيجمع خصائص ودوال مع بعض',
+		level: 'mid',
 		options: [
 			'ملف بيتخزن في السيرفر',
 			'قيمة Boolean',
@@ -438,6 +477,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'وسيلة بتنظم الكود باستخدام import و export',
+		level: 'mid',
 		options: [
 			'دالة بتشغل نفسها تلقائيًا',
 			'Loop بيتوقف عند شرط معين',
@@ -448,6 +488,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'دالة بتتنادى على نفسها جواها',
+		level: 'mid',
 		options: [
 			'دالة بتتنادى على نفسها جواها',
 			'كود بيكرر نفسه في loop',
@@ -458,6 +499,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'وسيلة تمنع تغيير بيانات object بعد إنشاؤه',
+		level: 'mid',
 		options: [
 			'Loop جديد',
 			'وسيلة تمنع تغيير بيانات object بعد إنشاؤه',
@@ -468,6 +510,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Event بيتنقل من العنصر الصغير للكبير',
+		level: 'mid',
 		options: [
 			'Event بيتنقل من الكبير للصغير',
 			'Event بيتوقف عند أول عنصر',
@@ -478,6 +521,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'Event بيتنقل من الكبير للصغير لحد ما يوصل للعنصر الهدف',
+		level: 'mid',
 		options: [
 			'Event بيقف عند العنصر الهدف',
 			'Event بيتنقل من الكبير للصغير لحد ما يوصل للعنصر الهدف',
@@ -488,6 +532,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'طريقة تخليك تشغل كود كل فترة زمنية',
+		level: 'mid',
 		options: [
 			'تخزين بيانات في object',
 			'Loop بينفذ مرة واحدة',
@@ -498,6 +543,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'طريقة تخليك تأجل تنفيذ كود لحد وقت معين',
+		level: 'mid',
 		options: [
 			'تكرار Array',
 			'دالة بترجع Boolean',
@@ -508,6 +554,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'بترجع نسخة shallow من جزء من array',
+		level: 'mid',
 		options: [
 			'بترجع نسخة shallow من جزء من array',
 			'بتمسح عناصر array',
@@ -518,6 +565,7 @@ export const jsQuiz: JsQuiz[] = [
 	},
 	{
 		answer: 'بتغير array نفسه وتشيل أو تضيف عناصر',
+		level: 'mid',
 		options: [
 			'بترجع نسخة shallow من array',
 			'بتحول array لـ string',

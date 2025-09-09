@@ -1,12 +1,9 @@
-export type ReactQuiz = {
-	term: string;
-	options: string[];
-	answer: string;
-};
+import { Quiz } from 'src/types';
 
-export const reactQuiz: ReactQuiz[] = [
+export const reactQuiz: Quiz[] = [
 	{
 		answer: 'مكتبة JavaScript لبناء الواجهات',
+		level: 'junior',
 		options: [
 			'مكتبة JavaScript لبناء الواجهات',
 			'Framework كامل زي Angular',
@@ -17,6 +14,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'يكتب HTML جوه JavaScript',
+		level: 'mid',
 		options: [
 			'يخلي JavaScript يتعامل مع SQL',
 			'يكتب HTML جوه JavaScript',
@@ -27,6 +25,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'Functional Components أبسط و مبنية على functions',
+		level: 'senior',
 		options: [
 			'Functional Components أبسط و مبنية على functions',
 			'Class Components أسرع دايمًا',
@@ -37,6 +36,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'نسخة خفيفة من DOM الحقيقي بيعمل بيها React التحديثات',
+		level: 'junior',
 		options: [
 			'نسخة خفيفة من DOM الحقيقي بيعمل بيها React التحديثات',
 			'Database جديدة',
@@ -47,6 +47,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'بيخزن و يحدث state جوا component',
+		level: 'mid',
 		options: [
 			'بيخزن و يحدث state جوا component',
 			'بيجيب بيانات من API',
@@ -57,6 +58,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'تنفيذ side effects زي API calls',
+		level: 'mid',
 		options: [
 			'تنفيذ side effects زي API calls',
 			'تعريف متغير جديد',
@@ -67,6 +69,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'لما تمرر props من component للأحفاد بشكل متكرر',
+		level: 'senior',
 		options: [
 			'لما تمرر props من component للأحفاد بشكل متكرر',
 			'إنك تستخدم Redux',
@@ -77,6 +80,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'Props بتيجي من برة و State بيتغير من جوة component',
+		level: 'junior',
 		options: [
 			'Props بتيجي من برة و State بيتغير من جوة component',
 			'State ثابتة و Props متغيرة',
@@ -87,6 +91,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'بتميز العناصر في القوائم عشان React يعرف يعمل re-render بكفاءة',
+		level: 'mid',
 		options: [
 			'بتميز العناصر في القوائم عشان React يعرف يعمل re-render بكفاءة',
 			'تخزن الـ state',
@@ -97,6 +102,7 @@ export const reactQuiz: ReactQuiz[] = [
 	},
 	{
 		answer: 'طريقة لإدارة state ومشاركتها بين Components من غير Prop Drilling',
+		level: 'senior',
 		options: [
 			'طريقة لإدارة state ومشاركتها بين Components من غير Prop Drilling',
 			'API لجلب البيانات من السيرفر',

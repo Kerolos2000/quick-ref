@@ -1,8 +1,14 @@
 import { QuizLayout } from 'src/components';
-import { useQuizReset, useReactQuizStore } from 'src/hooks';
+import {
+	useGlobalLevelStore,
+	useQuizReset,
+	useReactQuizStore,
+} from 'src/hooks';
 import { reactQuiz } from 'src/lib';
 
 export const ReactQuiz: React.FC = () => {
+	const { levels } = useGlobalLevelStore();
+	const level = levels.react;
 	const {
 		attempts,
 		current,
@@ -21,6 +27,9 @@ export const ReactQuiz: React.FC = () => {
 		handleResetRequest,
 	} = useQuizReset(resetQuiz);
 
+	const filteredQuestions =
+		level === 'all' ? reactQuiz : reactQuiz.filter(q => q.level === level);
+
 	return (
 		<QuizLayout
 			attempts={attempts}
@@ -28,13 +37,14 @@ export const ReactQuiz: React.FC = () => {
 			current={current}
 			onCancelReset={handleCancelReset}
 			onConfirmReset={handleConfirmReset}
-			onNext={nextQuestion}
-			onPrev={prevQuestion}
+			onNext={() => nextQuestion(level)}
+			onPrev={() => prevQuestion(level)}
 			onResetRequest={handleResetRequest}
 			onSelect={selectAnswer}
 			prevDisabled={current === 0}
-			questions={reactQuiz}
-			resetDisabled={reactQuiz.length === 0}
+			questions={filteredQuestions}
+			quizType='react'
+			resetDisabled={filteredQuestions.length === 0}
 			score={score}
 			selected={selected}
 			title='اختبار React'
