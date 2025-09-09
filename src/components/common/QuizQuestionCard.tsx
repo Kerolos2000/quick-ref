@@ -9,7 +9,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import { useNotify } from 'src/hooks';
-import { QuizQuestion } from 'src/types';
+import { Quiz } from 'src/types';
 
 interface Props {
 	current: number;
@@ -19,7 +19,7 @@ interface Props {
 	onSelect: (value: string) => void;
 	prevDisabled?: boolean;
 	progressValue: number;
-	question: QuizQuestion;
+	question: Quiz;
 	resetDisabled?: boolean;
 	selected: string | null;
 	total: number;

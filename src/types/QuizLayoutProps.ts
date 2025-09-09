@@ -1,11 +1,17 @@
-export interface QuizQuestion {
-	answer: string;
-	options: string[];
+export type Level = 'junior' | 'mid' | 'senior' | 'all';
+
+export type QuizType = 'react' | 'js';
+
+export type Quiz = {
 	term: string;
-}
+	options: string[];
+	answer: string;
+	level: Level;
+};
 
 export interface Attempt {
 	date: string;
+	level: Level;
 	score: number;
 	total: number;
 }
@@ -21,7 +27,8 @@ export interface QuizLayoutProps {
 	onResetRequest: () => void;
 	onSelect: (value: string) => void;
 	prevDisabled?: boolean;
-	questions: QuizQuestion[];
+	questions: Quiz[];
+	quizType: QuizType;
 	resetDisabled?: boolean;
 	score?: number;
 	selected: string | null;

@@ -9,7 +9,6 @@ import { QuizStatsCard } from './QuizStatsCard';
 import { QuizSummaryCard } from './QuizSummaryCard';
 
 export const QuizLayout: React.FC<QuizLayoutProps> = ({
-	attempts = [],
 	confirmOpen,
 	current,
 	onCancelReset,
@@ -67,7 +66,6 @@ export const QuizLayout: React.FC<QuizLayoutProps> = ({
 							/>
 						) : (
 							<QuizSummaryCard
-								attempts={attempts}
 								onConfirmReset={onConfirmReset}
 								score={score}
 								toastNode={toastNode}
