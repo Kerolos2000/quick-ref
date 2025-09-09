@@ -29,6 +29,12 @@ const navItems = [
 		variant: 'text',
 	},
 	{
+		color: 'inherit',
+		label: 'المصطلحات العلمية',
+		path: Routes.ScientificTerms,
+		variant: 'text',
+	},
+	{
 		color: 'primary',
 		label: 'حسابي',
 		path: Routes.MyProfile,

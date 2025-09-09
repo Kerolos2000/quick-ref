@@ -35,6 +35,13 @@ export const AppRoutes = createBrowserRouter([
 			},
 			{
 				async lazy() {
+					const { ScientificTerms } = await import('src/pages');
+					return { Component: ScientificTerms };
+				},
+				path: Routes.ScientificTerms,
+			},
+			{
+				async lazy() {
 					const { NotFound } = await import('src/pages');
 					return { Component: NotFound };
 				},
