@@ -1,4 +1,4 @@
-import { Level } from 'src/types';
+import { Level, QuizType } from 'src/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -7,9 +7,9 @@ interface GlobalLevelState {
 		js: Level;
 		react: Level;
 	};
-	resetLevelDialog: (quizType: 'js' | 'react') => void;
-	setLevel: (quizType: 'js' | 'react', level: Level) => void;
-	setShowLevelDialog: (quizType: 'js' | 'react', show: boolean) => void;
+	resetLevelDialog: (quizType: QuizType) => void;
+	setLevel: (quizType: QuizType, level: Level) => void;
+	setShowLevelDialog: (quizType: QuizType, show: boolean) => void;
 	showLevelDialog: {
 		js: boolean;
 		react: boolean;
@@ -23,14 +23,14 @@ export const useGlobalLevelStore = create<GlobalLevelState>()(
 				js: 'all',
 				react: 'all',
 			},
-			resetLevelDialog: (quizType: 'js' | 'react') =>
+			resetLevelDialog: (quizType: QuizType) =>
 				set(state => ({
 					showLevelDialog: {
 						...state.showLevelDialog,
 						[quizType]: true,
 					},
 				})),
-			setLevel: (quizType: 'js' | 'react', level: Level) =>
+			setLevel: (quizType: QuizType, level: Level) =>
 				set(state => ({
 					levels: {
 						...state.levels,
@@ -41,7 +41,7 @@ export const useGlobalLevelStore = create<GlobalLevelState>()(
 						[quizType]: false,
 					},
 				})),
-			setShowLevelDialog: (quizType: 'js' | 'react', show: boolean) =>
+			setShowLevelDialog: (quizType: QuizType, show: boolean) =>
 				set(state => ({
 					showLevelDialog: {
 						...state.showLevelDialog,

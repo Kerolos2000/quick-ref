@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import React from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 
-interface Props {
+export interface QuizStatsCardProps {
 	current: number;
 	funnyMessage?: string;
 	percentage: number;
@@ -14,7 +14,7 @@ interface Props {
 	total: number;
 }
 
-export const QuizStatsCard: React.FC<Props> = ({
+export const QuizStatsCard: React.FC<QuizStatsCardProps> = ({
 	current,
 	funnyMessage,
 	percentage,

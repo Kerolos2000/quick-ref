@@ -8,39 +8,47 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import React, { useEffect, useState } from 'react';
 import { useGlobalLevelStore } from 'src/hooks';
-import { Level } from 'src/types';
+import { Level, QuizType } from 'src/types';
 
 export interface LevelDialogProps {
-	quizType: 'js' | 'react';
+	quizType: QuizType;
 }
 
 export const LevelDialog: React.FC<LevelDialogProps> = ({ quizType }) => {
-	const { levels, setLevel, showLevelDialog } = useGlobalLevelStore();
+	const { levels, setLevel, setShowLevelDialog, showLevelDialog } =
+		useGlobalLevelStore();
+	const level = levels[quizType] || 'all';
+	const open = showLevelDialog[quizType];
 
-	const level = levels[quizType];
-	const showDialog = showLevelDialog[quizType];
-
-	const [open, setOpen] = useState(showDialog);
-	const [value, setValue] = useState<Level>(level || 'all');
+	const [pendingValue, setPendingValue] = useState<Level>(level);
 
 	useEffect(() => {
-		setOpen(showDialog);
-	}, [showDialog]);
+		if (open) {
+			setPendingValue(level);
+		}
+	}, [open, level]);
+
+	const handleClose = () => {
+		setShowLevelDialog(quizType, false);
+	};
 
 	const handleConfirm = () => {
-		if (value) {
-			setLevel(quizType, value);
-			setOpen(false);
-		}
+		setLevel(quizType, pendingValue);
+		handleClose();
 	};
 
 	return (
-		<Dialog open={open}>
+		<Dialog
+			fullWidth
+			maxWidth='sm'
+			onClose={handleClose}
+			open={open}
+		>
 			<DialogTitle>اختر المستوى</DialogTitle>
 			<DialogContent>
 				<RadioGroup
-					onChange={e => setValue(e.target.value as Level)}
-					value={value}
+					onChange={e => setPendingValue(e.target.value as Level)}
+					value={pendingValue}
 				>
 					<FormControlLabel
 						control={<Radio />}
@@ -66,8 +74,9 @@ export const LevelDialog: React.FC<LevelDialogProps> = ({ quizType }) => {
 			</DialogContent>
 			<DialogActions>
 				<Button
-					disabled={!value}
+					disabled={!pendingValue}
 					onClick={handleConfirm}
+					sx={{ mb: 2, mx: 2 }}
 					variant='contained'
 				>
 					بدء الاختبار

@@ -11,7 +11,7 @@ import React from 'react';
 import { useNotify } from 'src/hooks';
 import { Quiz } from 'src/types';
 
-interface Props {
+export interface QuizQuestionCardProps {
 	current: number;
 	onNext: () => void;
 	onPrev: () => void;
@@ -25,7 +25,7 @@ interface Props {
 	total: number;
 }
 
-export const QuizQuestionCard: React.FC<Props> = ({
+export const QuizQuestionCard: React.FC<QuizQuestionCardProps> = ({
 	current,
 	onNext,
 	onPrev,

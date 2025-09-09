@@ -5,13 +5,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
-interface Props {
+interface QuizResetDialogProps {
 	onCancel: () => void;
 	onConfirm: () => void;
 	open: boolean;
 }
 
-export const QuizResetDialog: React.FC<Props> = ({
+export const QuizResetDialog: React.FC<QuizResetDialogProps> = ({
 	onCancel,
 	onConfirm,
 	open,

@@ -1,13 +1,33 @@
 import Grid from '@mui/material/Grid';
 import { Page, Section } from 'mui-plus-components';
 import React from 'react';
-import { QuizLayoutProps } from 'src/types';
+import { Attempt, Quiz, QuizType } from 'src/types';
 
 import { LevelDialog } from './LevelDialog';
 import { QuizQuestionCard } from './QuizQuestionCard';
 import { QuizResetDialog } from './QuizResetDialog';
 import { QuizStatsCard } from './QuizStatsCard';
 import { QuizSummaryCard } from './QuizSummaryCard';
+
+export interface QuizLayoutProps {
+	attempts?: Attempt[];
+	confirmOpen: boolean;
+	current: number;
+	onCancelReset: () => void;
+	onConfirmReset: () => void;
+	onNext: () => void;
+	onPrev: () => void;
+	onResetRequest: () => void;
+	onSelect: (value: string) => void;
+	prevDisabled?: boolean;
+	questions: Quiz[];
+	quizType: QuizType;
+	resetDisabled?: boolean;
+	score?: number;
+	selected: string | null;
+	title: string;
+	toastNode?: React.ReactNode;
+}
 
 export const QuizLayout: React.FC<QuizLayoutProps> = ({
 	confirmOpen,

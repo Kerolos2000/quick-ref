@@ -1,22 +1,9 @@
 import { reactQuiz } from 'src/lib';
-import { Attempt, Level } from 'src/types';
+import { Level, QuizState } from 'src/types';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 import { useGlobalLevelStore } from './globalLevelStore';
-
-interface QuizState {
-	answers: Record<number, string>;
-	attempts: Attempt[];
-	current: number;
-	nextQuestion: (level: Level) => void;
-	prevQuestion: (level: Level) => void;
-	resetQuiz: () => void;
-	score: number;
-	selectAnswer: (answer: string) => void;
-	selected: string;
-	startNew: () => void;
-}
 
 export const useReactQuizStore = create<QuizState>()(
 	persist(
