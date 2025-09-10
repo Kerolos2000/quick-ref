@@ -1,9 +1,11 @@
 import SearchIcon from '@mui/icons-material/Search';
+import Autocomplete from '@mui/material/Autocomplete';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
+import Stack from '@mui/material/Stack';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -18,23 +20,24 @@ import { scientificTerms } from 'src/lib/mocks';
 
 export interface ScientificTermsProps {}
 
+const topics = ['all', 'HTML', 'CSS', 'JS', 'React', 'Next', 'Testing'];
+
 export const ScientificTerms: React.FC<ScientificTermsProps> = () => {
 	const [searchTerm, setSearchTerm] = useState('');
+	const [selectedTopic, setSelectedTopic] = useState('all');
 
 	const filteredTerms = useMemo(() => {
 		return scientificTerms.filter(term => {
 			const matchesSearch =
 				term.term.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				term.definition.toLowerCase().includes(searchTerm.toLowerCase()) ||
-				term.example?.toLowerCase().includes(searchTerm.toLowerCase());
+				term.definition.toLowerCase().includes(searchTerm.toLowerCase());
 
-			return matchesSearch;
+			const matchesTopic =
+				selectedTopic === 'all' || term.tag.includes(selectedTopic);
+
+			return matchesSearch && matchesTopic;
 		});
-	}, [searchTerm]);
-
-	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchTerm(event.target.value);
-	};
+	}, [searchTerm, selectedTopic]);
 
 	return (
 		<Page title='المصطلحات العلمية'>
@@ -63,22 +66,39 @@ export const ScientificTerms: React.FC<ScientificTermsProps> = () => {
 				<Card sx={{ mb: 4 }}>
 					<CardContent>
 						<Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-							<TextField
-								fullWidth
-								InputProps={{
-									startAdornment: (
-										<SearchIcon sx={{ color: 'text.secondary', mr: 1 }} />
-									),
-								}}
-								onChange={handleSearchChange}
-								placeholder='ابحث في المصطلحات أو التعريفات أو الأمثلة...'
-								sx={{
-									'& .MuiOutlinedInput-root': {
-										borderRadius: 2,
-									},
-								}}
-								value={searchTerm}
-							/>
+							<Stack
+								direction='row'
+								sx={{ alignItems: 'center', gap: 2 }}
+							>
+								<Autocomplete
+									disableClearable
+									onChange={(_, newValue) =>
+										setSelectedTopic(newValue || 'all')
+									}
+									options={topics}
+									renderInput={params => (
+										<TextField
+											{...params}
+											label='اختر الموضوع'
+										/>
+									)}
+									sx={{ width: 250 }}
+									value={selectedTopic}
+								/>
+								<TextField
+									fullWidth
+									onChange={e => setSearchTerm(e.target.value)}
+									placeholder='ابحث في المصطلحات أو التعريفات أو الأمثلة...'
+									slotProps={{
+										input: {
+											startAdornment: (
+												<SearchIcon sx={{ color: 'text.secondary', mr: 1 }} />
+											),
+										},
+									}}
+									value={searchTerm}
+								/>
+							</Stack>
 
 							<Typography
 								color='text.secondary'
@@ -90,21 +110,15 @@ export const ScientificTerms: React.FC<ScientificTermsProps> = () => {
 					</CardContent>
 				</Card>
 
-				<TableContainer
-					component={Paper}
-					sx={{ borderRadius: 2 }}
-				>
+				<TableContainer component={Paper}>
 					<Table>
 						<TableHead>
-							<TableRow sx={{ bgcolor: 'grey.50' }}>
+							<TableRow sx={{ bgcolor: 'grey.200' }}>
 								<TableCell sx={{ fontSize: '1.1rem', fontWeight: 700 }}>
 									المصطلح
 								</TableCell>
 								<TableCell sx={{ fontSize: '1.1rem', fontWeight: 700 }}>
 									التعريف
-								</TableCell>
-								<TableCell sx={{ fontSize: '1.1rem', fontWeight: 700 }}>
-									المثال
 								</TableCell>
 							</TableRow>
 						</TableHead>
@@ -114,9 +128,9 @@ export const ScientificTerms: React.FC<ScientificTermsProps> = () => {
 									hover
 									key={term.id}
 								>
-									<TableCell>
+									<TableCell sx={{ maxWidth: 250, width: 250 }}>
 										<Typography
-											sx={{ color: 'primary.main', fontWeight: 600 }}
+											sx={{ color: 'primary.dark', fontWeight: 600 }}
 											variant='h6'
 										>
 											{term.term}
@@ -124,29 +138,11 @@ export const ScientificTerms: React.FC<ScientificTermsProps> = () => {
 									</TableCell>
 									<TableCell>
 										<Typography
-											sx={{ lineHeight: 1.6 }}
+											sx={{ lineHeight: 1.9 }}
 											variant='body1'
 										>
 											{term.definition}
 										</Typography>
-									</TableCell>
-									<TableCell>
-										{term.example ? (
-											<Typography
-												color='text.secondary'
-												sx={{ fontStyle: 'italic' }}
-												variant='body2'
-											>
-												{term.example}
-											</Typography>
-										) : (
-											<Typography
-												color='text.disabled'
-												variant='body2'
-											>
-												لا يوجد مثال
-											</Typography>
-										)}
 									</TableCell>
 								</TableRow>
 							))}
