@@ -130,7 +130,7 @@ export const ScientificTerms: React.FC<ScientificTermsProps> = () => {
 								>
 									<TableCell sx={{ maxWidth: 250, width: 250 }}>
 										<Typography
-											sx={{ color: 'primary.dark', fontWeight: 600 }}
+											sx={{ color: 'green', fontWeight: 600 }}
 											variant='h6'
 										>
 											{term.term}

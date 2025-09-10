@@ -51,7 +51,6 @@ export const HomeIntroSection: React.FC<HomeIntroSectionProps> = () => {
 							}}
 						>
 							<Button
-								color='inherit'
 								component={NavLink}
 								to={Routes.JsQuiz}
 								variant='contained'
@@ -59,20 +58,11 @@ export const HomeIntroSection: React.FC<HomeIntroSectionProps> = () => {
 								أسئلة JavaScript
 							</Button>
 							<Button
-								color='inherit'
 								component={NavLink}
 								to={Routes.ReactQuiz}
 								variant='contained'
 							>
 								أسئلة React
-							</Button>
-							<Button
-								color='primary'
-								component={NavLink}
-								to={Routes.MyProfile}
-								variant='contained'
-							>
-								حسابى
 							</Button>
 						</Stack>
 					</CardContent>

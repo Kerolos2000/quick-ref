@@ -59,7 +59,7 @@ const lightTheme: ThemeOptions = createTheme({
 		mode: 'light',
 		primary: {
 			contrastText: '#000000',
-			dark: '#517e06',
+			dark: '#a3e600',
 			light: '#bef264',
 			main: '#a3e635',
 		},
