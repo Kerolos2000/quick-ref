@@ -18,9 +18,20 @@ export const HomeAboutMeSection: React.FC<HomeAboutMeSectionProps> = () => {
 				justifyContent='center'
 				sx={{ textAlign: 'center' }}
 			>
-				<Card sx={{ borderRadius: 2, boxShadow: 3, width: '100%' }}>
+				<Card
+					sx={{
+						'&:hover': {
+							boxShadow: 5,
+							transform: 'translateY(-5px)',
+						},
+						borderRadius: 3,
+						boxShadow: 3,
+						transition: 'transform 0.3s, box-shadow 0.3s',
+						width: '100%',
+					}}
+				>
 					<CardContent
-						sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+						sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 4 }}
 					>
 						<Typography
 							sx={{ fontWeight: 'bold' }}
@@ -40,17 +51,13 @@ export const HomeAboutMeSection: React.FC<HomeAboutMeSectionProps> = () => {
 							تقنيات جديدة وأشارك في مشاريع Open Source 🌍.
 						</Typography>
 						<Typography variant='body1'>
-							شغوف بالتطوير المستمر والتعاون مع فرق مختلفة لبناء منتجات قوية و
-							مؤثرة 💡.
+							شغوف بالتطوير المستمر والتعاون مع فرق مختلفة لبناء منتجات قوية
+							ومؤثرة 💡.
 						</Typography>
 
 						<Stack
 							direction='row'
-							sx={{
-								flexWrap: 'wrap',
-								gap: 2,
-								justifyContent: 'center',
-							}}
+							sx={{ flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}
 						>
 							<Button
 								href='https://github.com/Kerolos2000'

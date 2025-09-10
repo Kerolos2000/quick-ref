@@ -16,9 +16,20 @@ export const HomeProjectGoalSection: React.FC<
 				justifyContent='center'
 				sx={{ textAlign: 'center' }}
 			>
-				<Card sx={{ borderRadius: 2, boxShadow: 3, width: '100%' }}>
+				<Card
+					sx={{
+						'&:hover': {
+							boxShadow: 5,
+							transform: 'translateY(-5px)',
+						},
+						borderRadius: 3,
+						boxShadow: 3,
+						transition: 'transform 0.3s, box-shadow 0.3s',
+						width: '100%',
+					}}
+				>
 					<CardContent
-						sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+						sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 4 }}
 					>
 						<Typography
 							sx={{ fontWeight: 'bold' }}
